@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import Navbar from './components/navbar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+root.render( // the <Navbar />  is nested in the index.js rather than in the app.js with the navbar Route path nesting all the routes 
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter> 
+    <Navbar />  
     <App />
     </BrowserRouter>
   </React.StrictMode>
