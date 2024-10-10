@@ -9,8 +9,8 @@ const Login = ({ setIsLogged, setUsername }) => {
   //NAVIGATION
   const navigate = useNavigate();
 
-  const dummyUserObject = {
-    username: "Kolosafo",
+  const dummyUserObject = { // a dummy user info to mimics a login scenario so we dont use a live api
+    username: "Kolosafo", // is the username of a live user from the api, use this to login
     password: "12345",
   };
   const handleLogin = (e) => {
