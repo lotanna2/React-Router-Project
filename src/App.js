@@ -2,7 +2,7 @@ import './App.css';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom'; // the Navigate component is used to protect routes and enable redirect when the set rules for processing that route arent met 
 import Home from "./components/home";
 import React, { useState, lazy, Suspense } from 'react'; // suspense comp allows you to show a fallback ui while the lazyloded compoent finishes 
-import { SwitchTransition, CSSTransition } from 'react-transition-group'; // the 'switchTrabsition' acts as a wrapper for all elements or routes thst would be inherited
+import { SwitchTransition, CSSTransition } from 'react-transition-group'; // the 'switchTransition' acts as a wrapper for the routes for all elements or routes that would inherit the animation effect
 
 const Users = lazy(() => import("./components/users")); // all for lazy loading, every other component would not be delayed 
 const UserProfile = lazy(() => import('./components/userProfile')); 
@@ -29,27 +29,27 @@ return (
     unmountOnExit>
         <Suspense fallback={() => <h1> Loading... </h1>
          }>
-        <Routes location={location}> 
-            <Route exact path="/" element={<Home />} /> 
-            <Route path="/about" element={<AboutUs />} /> 
-            <Route path="/users" element={<Users />} /> 
-            <Route element={<UserProfile />} path="/users/user/:username "/> 
-            <Route path="/search" element={<SearchUser />} /> 
-            <Route 
-            element={
-            <Login setIsLogged={setIsLogged} setUsername={setUsername} />
+          <Routes location={location}> 
+              <Route exact path="/" element={<Home />} /> 
+              <Route path="/about" element={<AboutUs />} /> 
+              <Route path="/users" element={<Users />} /> 
+              <Route element={<UserProfile />} path="/users/user/:username "/> 
+              <Route path="/search" element={<SearchUser />} /> 
+              <Route 
+              element={
+              <Login setIsLogged={setIsLogged} setUsername={setUsername} />
+                } 
+                path="/login" />
+              <Route 
+                element={isLogged ? ( <AuthProfile username={username}/>
+                ) : (
+                <Navigate  replace to ={"/login"} /> 
+                ) // navigate component to triger the 'login route' if the user isnt authenticated.
               } 
-              path="/login" />
-            <Route 
-              element={isLogged ? ( <AuthProfile username={username}/>
-              ) : (
-              <Navigate  replace to ={"/login"} /> 
-              ) // navigate component to triger the 'login route' if the user isnt authenticated.
-            } 
-              path="/authprofile" 
-            />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+                path="/authprofile" 
+              />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </Suspense>
     </CSSTransition>
 
