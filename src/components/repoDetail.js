@@ -7,7 +7,7 @@ const RepoDetail = () => {
   const [gitRepoData, setGitRepoData] = useState();
   const [cloneCopy, setCloneCopy] = useState(false);
   const { name, username } = useParams();
-
+  
   useEffect(() => {
     const getGitUser = async () => {
       const response = await axios.get(

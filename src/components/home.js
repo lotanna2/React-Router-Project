@@ -29,22 +29,21 @@ const RepoList = () => {
             />
             <span className="username">{repo.name}</span>
 
-            <span className="repo-lang-span">Language: {repo.language}</span>
+            <span className="repo-lang-span">Language: {repo.language}</span> 
             <div>
               By:{" "}
               <Link
-                to={`/users/user/${repo.owner.login}`}
-                className="repo-owner"
+                to={`/users/user/${repo.owner.login}`} // directs to the users login page
+                className="repo-owner" 
               >
-                {repo.owner.login}
+                {repo.owner.login} 
               </Link>
-            </div>
-
-            <Link to={`/repo-detail/${repo.name}/${repo.owner.login}`}>
-              <button>View Repo</button>
-            </Link>
-          </div>
-        ))
+            </div> 
+            <Link to={`/repo-detail/${repo.name}/${repo.owner.login}`}>  
+              <button>View Repo</button> 
+            </Link> 
+          </div> 
+        )) 
       ) : (
         <h1>Loading...</h1>
       )}

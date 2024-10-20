@@ -8,6 +8,7 @@ const SearchUser = lazy(() => import("./components/searchUser"));
 const Login = lazy(() => import('./components/login'));
 const AuthProfile = lazy(() => import('./components/authProfile')); 
 const AboutUs = lazy(() => import("./components/about")); 
+const RepoDetail = lazy(() => import("./components/repoDetails")); 
 const NotFound = lazy(() => import('./components/notfound')); 
 
 // creatying the route object for them, they need a path and component property
@@ -48,6 +49,11 @@ export const appRoutes = [
     component: AboutUs,
     requiresAuth: false,
  },
+ {
+   path: "/repo-detail/:name/:username", // for the parameters you want
+   component: RepoDetail,
+   requiresAuth: false,
+},
  {
     path: "/notfound",
     component: NotFound,
